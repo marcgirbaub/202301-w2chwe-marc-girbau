@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "prepare": "husky install",
     "prebuild": "rimraf dist",
     "prebuild:dev": "rimraf dist",
@@ -20,6 +20,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.1.0",
     "parcel": "^2.8.3",
+    "prettier": "^2.8.3",
     "rimraf": "^4.1.1"
   }
 }
