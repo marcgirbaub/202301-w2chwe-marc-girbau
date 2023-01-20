@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "prepare": "husky install",
     "prebuild": "rimraf dist",
     "prebuild:dev": "rimraf dist",
