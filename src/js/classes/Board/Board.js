@@ -1,3 +1,4 @@
+import { number } from "yargs";
 import Cell from "../Cell/Cell";
 
 class Board {
@@ -31,6 +32,47 @@ class Board {
     const subBoard = [upperSlice, middleSlice, lowerSlice];
 
     return subBoard;
+  }
+
+  buildNextGenerationBoard() {
+    this.nextGenerationBoard = this.board.map((column) => column);
+
+    [this.board].forEach((column, positionColumn) => {
+      column.forEach((cell, positionRow) => {
+        const isCurrentCellAlive = cell.alive;
+        let numberOfNeighbours = 0;
+
+        const sub3x3Array = this.getSubArray(
+          this.board,
+          positionRow,
+          positionColumn
+        );
+
+        sub3x3Array.forEach((cell) => {
+          if (cell.alive) {
+            numberOfNeighbours++;
+          }
+        });
+
+        if (isCurrentCellAlive) {
+          numberOfNeighbours -= 1;
+        }
+
+        if (cell.alive && numberOfNeighbours < 2) {
+          this.nextGenerationBoard[positionColumn][positionRow].alive = false;
+        }
+
+        if (cell.alive && numberOfNeighbours > 3) {
+          this.nextGenerationBoard[positionColumn][positionRow].alive = false;
+        }
+
+        if (!cell.alive && numberOfNeighbours === 3) {
+          this.nextGenerationBoard[positionColumn][positionRow].alive = true;
+        }
+      });
+    });
+
+    this.board = this.nextGenerationBoard;
   }
 }
 
