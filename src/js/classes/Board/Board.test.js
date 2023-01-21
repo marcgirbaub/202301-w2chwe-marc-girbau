@@ -54,4 +54,21 @@ describe("Given the getSubArray method of the Board class", () => {
       expect(subBoard).toEqual(expectedBoard);
     });
   });
+
+  describe("when it receives the following board [[0,0,1,0,1], [1,1,0,0,1], [1,1,1,0,0], [1,0,0,1,0]] and the position row 0, column 0", () => {
+    test("Then it should return the following board [[], [0, 0], [1, 1]]", () => {
+      const board = new Board();
+      const boardTable = [
+        [0, 0, 1, 0, 1],
+        [1, 1, 0, 0, 1],
+        [1, 1, 1, 0, 0],
+        [1, 0, 0, 1, 0],
+      ];
+      const expectedBoard = [[], [0, 0], [1, 1]];
+
+      const subBoard = board.getSubArray(boardTable, 0, 0);
+
+      expect(subBoard).toEqual(expectedBoard);
+    });
+  });
 });

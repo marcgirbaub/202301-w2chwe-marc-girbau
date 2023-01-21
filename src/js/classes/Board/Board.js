@@ -20,14 +20,17 @@ class Board {
   }
 
   getSubArray(board, row, column) {
-    const newBoard = board.slice(row - 1, row + 2);
+    const upperRow = board[row - 1] || [];
+    const middleRow = board[row];
+    const lowerRow = board[row + 1] || [];
 
-    newBoard.forEach((array, position) => {
-      newBoard[position] = array.slice(column - 1, column + 2);
-      return newBoard;
-    });
+    const upperSlice = upperRow.slice((column || 1) - 1, column + 2);
+    const middleSlice = middleRow.slice((column || 1) - 1, column + 2);
+    const lowerSlice = lowerRow.slice((column || 1) - 1, column + 2);
 
-    return newBoard;
+    const subBoard = [upperSlice, middleSlice, lowerSlice];
+
+    return subBoard;
   }
 }
 
