@@ -6,7 +6,7 @@ class Board {
   board;
   nextGenerationBoard;
 
-  constructor(columns = 40, rows = 40) {
+  constructor(columns = 20, rows = 20) {
     this.columns = columns;
     this.rows = rows;
   }
@@ -88,6 +88,26 @@ class Board {
     this.nextGenerationBoard = nextGeneration;
 
     this.board = this.nextGenerationBoard.map((row) => [...row]);
+  }
+
+  updateBoard(board) {
+    this.board.forEach((row) => {
+      const rowElement = document.createElement("div");
+
+      row.forEach((cell) => {
+        const cellElement = document.createElement("button");
+        cellElement.classList.add("button--board");
+        if (cell) {
+          cellElement.classList.add("alive");
+        } else {
+          cellElement.classList.add("dead");
+        }
+
+        rowElement.appendChild(cellElement);
+      });
+
+      board.appendChild(rowElement);
+    });
   }
 }
 
