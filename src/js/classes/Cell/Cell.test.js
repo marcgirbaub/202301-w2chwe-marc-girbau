@@ -37,3 +37,41 @@ describe("Given the die method of a cell", () => {
     });
   });
 });
+
+describe("Given the resurrect method of a cell", () => {
+  describe("When the cell is dead and it should resurrect", () => {
+    test("Then the property alive of this cell should be equal to true", () => {
+      const cell = new Cell(false);
+      const expectedState = true;
+
+      cell.resurrect();
+      const cellState = cell.alive;
+
+      expect(cellState).toBe(expectedState);
+    });
+  });
+
+  describe("When the cell state is not defined and it should resurrect", () => {
+    test("Then the prpoerty alive of this cell should be equal to true", () => {
+      const cell = new Cell();
+      const expectedState = true;
+
+      cell.resurrect();
+      const cellState = cell.alive;
+
+      expect(cellState).toBe(expectedState);
+    });
+  });
+
+  describe("When the cell is alive and the method resurrect is used", () => {
+    test("Then the property alive of this cell should remain true", () => {
+      const cell = new Cell(true);
+      const expectedState = true;
+
+      cell.resurrect();
+      const cellState = cell.alive;
+
+      expect(cellState).toBe(expectedState);
+    });
+  });
+});

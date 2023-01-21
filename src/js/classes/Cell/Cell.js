@@ -10,6 +10,12 @@ class Cell {
       this.alive = false;
     }
   }
+
+  resurrect() {
+    if (!this.alive) {
+      this.alive = true;
+    }
+  }
 }
 
 export default Cell;
