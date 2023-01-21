@@ -32,3 +32,26 @@ describe("Given the randomize method of the Board class", () => {
     });
   });
 });
+
+describe("Given the getSubArray method of the Board class", () => {
+  describe("When it receives the following board [[0,0,1,0,1], [1,1,0,0,1], [1,1,1,0,0], [1,0,0,1,0]] and the positions row 2, column 3", () => {
+    test("Then it should return the following board [[0,0,1], [1,0,0], [0,1,0]]", () => {
+      const board = new Board();
+      const boardTable = [
+        [0, 0, 1, 0, 1],
+        [1, 1, 0, 0, 1],
+        [1, 1, 1, 0, 0],
+        [1, 0, 0, 1, 0],
+      ];
+      const expectedBoard = [
+        [0, 0, 1],
+        [1, 0, 0],
+        [0, 1, 0],
+      ];
+
+      const subBoard = board.getSubArray(boardTable, 2, 3);
+
+      expect(subBoard).toEqual(expectedBoard);
+    });
+  });
+});

@@ -19,8 +19,8 @@ class Board {
     );
   }
 
-  getSubArray(row, column) {
-    const newBoard = this.board.slice(row - 1, row + 2);
+  getSubArray(board, row, column) {
+    const newBoard = board.slice(row - 1, row + 2);
 
     newBoard.forEach((array, position) => {
       newBoard[position] = array.slice(column - 1, column + 2);
