@@ -6,7 +6,9 @@ class Cell {
   }
 
   die() {
-    this.alive = false;
+    if (this.alive !== false) {
+      this.alive = false;
+    }
   }
 }
 
