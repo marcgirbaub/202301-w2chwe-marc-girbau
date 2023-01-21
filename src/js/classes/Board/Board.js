@@ -89,6 +89,20 @@ class Board {
 
     this.board = this.nextGenerationBoard.map((row) => [...row]);
   }
+
+  updateBoard(board) {
+    this.board.forEach((row) => {
+      const rowElement = document.createElement("div");
+
+      row.forEach(() => {
+        const cellElement = document.createElement("button");
+
+        rowElement.appendChild(cellElement);
+      });
+
+      board.appendChild(rowElement);
+    });
+  }
 }
 
 export default Board;
