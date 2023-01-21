@@ -6,7 +6,7 @@ class Board {
   board;
   nextGenerationBoard;
 
-  constructor(columns = 40, rows = 40) {
+  constructor(columns = 20, rows = 20) {
     this.columns = columns;
     this.rows = rows;
   }
