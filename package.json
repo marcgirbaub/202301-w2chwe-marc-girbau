@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "@types/jest": "^29.2.6",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
@@ -24,5 +25,14 @@
     "parcel": "^2.8.3",
     "prettier": "^2.8.3",
     "rimraf": "^4.1.1"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
   }
 }
