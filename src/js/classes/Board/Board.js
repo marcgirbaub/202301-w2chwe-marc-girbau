@@ -94,8 +94,14 @@ class Board {
     this.board.forEach((row) => {
       const rowElement = document.createElement("div");
 
-      row.forEach(() => {
+      row.forEach((cell) => {
         const cellElement = document.createElement("button");
+        cellElement.classList.add("button--board");
+        if (cell) {
+          cellElement.classList.add("alive");
+        } else {
+          cellElement.classList.add("dead");
+        }
 
         rowElement.appendChild(cellElement);
       });
