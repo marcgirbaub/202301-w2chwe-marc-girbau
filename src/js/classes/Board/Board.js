@@ -1,4 +1,3 @@
-import { number } from "yargs";
 import Cell from "../Cell/Cell";
 
 class Board {
@@ -34,12 +33,28 @@ class Board {
     return subBoard;
   }
 
-  buildNextGenerationBoard() {
-    this.nextGenerationBoard = this.board.map((column) => column);
+  transformBoard() {
+    const newBoard = [];
 
-    [this.board].forEach((column, positionColumn) => {
-      column.forEach((cell, positionRow) => {
-        const isCurrentCellAlive = cell.alive;
+    this.board.forEach((row) => {
+      const insideRow = [];
+      row.forEach((column) => {
+        if (column.alive) {
+          insideRow.push(1);
+        } else insideRow.push(0);
+      });
+      newBoard.push(insideRow);
+    });
+
+    this.board = newBoard;
+  }
+
+  buildNextGenerationBoard() {
+    const nextGeneration = this.board.map((row) => [...row]);
+
+    [this.board].forEach((row, positionRow) => {
+      row.forEach((column, positionColumn) => {
+        const isCurrentCellAlive = column.alive;
         let numberOfNeighbours = 0;
 
         const sub3x3Array = this.getSubArray(
@@ -48,31 +63,34 @@ class Board {
           positionColumn
         );
 
-        sub3x3Array.forEach((cell) => {
-          if (cell.alive) {
-            numberOfNeighbours++;
-          }
+        sub3x3Array.forEach((subcolumn) => {
+          subcolumn.forEach((subcell) => {
+            if (subcell.alive) {
+              numberOfNeighbours++;
+            }
+          });
         });
 
         if (isCurrentCellAlive) {
           numberOfNeighbours -= 1;
         }
 
-        if (cell.alive && numberOfNeighbours < 2) {
-          this.nextGenerationBoard[positionColumn][positionRow].alive = false;
+        if (
+          column.alive &&
+          (numberOfNeighbours < 2 || numberOfNeighbours > 3)
+        ) {
+          nextGeneration[positionRow][positionColumn].alive = false;
         }
 
-        if (cell.alive && numberOfNeighbours > 3) {
-          this.nextGenerationBoard[positionColumn][positionRow].alive = false;
-        }
-
-        if (!cell.alive && numberOfNeighbours === 3) {
-          this.nextGenerationBoard[positionColumn][positionRow].alive = true;
+        if (!column.alive && numberOfNeighbours === 3) {
+          nextGeneration[positionRow][positionColumn].alive = true;
         }
       });
     });
 
-    this.board = this.nextGenerationBoard;
+    this.nextGenerationBoard = nextGeneration;
+
+    this.board = this.nextGenerationBoard.map((row) => [...row]);
   }
 }
 

@@ -10,5 +10,5 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: { "no-new": "off" },
+  rules: { "no-new": "off", "max-nested-callbacks": "off" },
 };
