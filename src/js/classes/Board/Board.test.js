@@ -96,3 +96,26 @@ describe("Given the transformBoard method of the Board class", () => {
     });
   });
 });
+
+describe("Given the method buildNextGenerationBoard of the Board class", () => {
+  describe("When it receives the following board [[0, 1, 0], [0, 1, 0], [1, 0, 1]]", () => {
+    test("Then it should set the board of the class to the following [[0, 0, 0], [1, 1, 1], [0, 1, 0]]", () => {
+      const board = new Board();
+      board.board = [
+        [0, 1, 0],
+        [0, 1, 0],
+        [1, 0, 1],
+      ];
+      const expectedBoard = [
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 1, 0],
+      ];
+
+      board.buildNextGenerationBoard();
+      const newGenerationBoard = board.nextGenerationBoard;
+
+      expect(newGenerationBoard).toEqual(expectedBoard);
+    });
+  });
+});

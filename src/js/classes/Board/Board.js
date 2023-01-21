@@ -52,9 +52,9 @@ class Board {
   buildNextGenerationBoard() {
     const nextGeneration = this.board.map((row) => [...row]);
 
-    [this.board].forEach((row, positionRow) => {
+    this.board.forEach((row, positionRow) => {
       row.forEach((column, positionColumn) => {
-        const isCurrentCellAlive = column.alive;
+        const isCurrentCellAlive = column;
         let numberOfNeighbours = 0;
 
         const sub3x3Array = this.getSubArray(
@@ -65,7 +65,7 @@ class Board {
 
         sub3x3Array.forEach((subcolumn) => {
           subcolumn.forEach((subcell) => {
-            if (subcell.alive) {
+            if (subcell) {
               numberOfNeighbours++;
             }
           });
@@ -75,15 +75,12 @@ class Board {
           numberOfNeighbours -= 1;
         }
 
-        if (
-          column.alive &&
-          (numberOfNeighbours < 2 || numberOfNeighbours > 3)
-        ) {
-          nextGeneration[positionRow][positionColumn].alive = false;
+        if (column && (numberOfNeighbours < 2 || numberOfNeighbours > 3)) {
+          nextGeneration[positionRow][positionColumn] = 0;
         }
 
-        if (!column.alive && numberOfNeighbours === 3) {
-          nextGeneration[positionRow][positionColumn].alive = true;
+        if (!column && numberOfNeighbours === 3) {
+          nextGeneration[positionRow][positionColumn] = 1;
         }
       });
     });
