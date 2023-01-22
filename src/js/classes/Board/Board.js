@@ -98,13 +98,22 @@ class Board {
 
   updateBoard(board) {
     board.innerHTML = "";
-    this.board.forEach((row) => {
+    this.board.forEach((row, rowIndex) => {
       const rowElement = document.createElement("div");
       rowElement.classList.add("row");
 
-      row.forEach((cell) => {
+      row.forEach((cell, cellIndex) => {
         const cellElement = document.createElement("button");
         cellElement.classList.add("button--board");
+        cellElement.addEventListener("click", () => {
+          if (cell) {
+            cellElement.classList.add("dead");
+            this.board[rowIndex][cellIndex] = 0;
+          } else {
+            cellElement.classList.add("alive");
+            this.board[rowIndex][cellIndex] = 1;
+          }
+        });
         if (cell) {
           cellElement.classList.add("alive");
         } else {
