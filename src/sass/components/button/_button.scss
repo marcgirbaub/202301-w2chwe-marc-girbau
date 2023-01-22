@@ -10,7 +10,7 @@
   background-color: variables.$cell-dark-color;
 }
 
-.button--interactive {
+.button__interactive {
   &:hover {
     opacity: 0.6;
   }
