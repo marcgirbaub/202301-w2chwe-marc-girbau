@@ -1,5 +1,7 @@
 import Board from "./classes/Board/Board";
 import boardElement from "./global-variables/global-variables";
+import emptyBoard from "./patterns/patterns";
+import Cell from "./classes/Cell/Cell";
 
 const playButtonEl = document.getElementsByClassName(
   "button__interactive--play"
@@ -9,6 +11,10 @@ const stopButtonEl = document.getElementsByClassName(
 )[0];
 const randomButtonEl = document.getElementsByClassName(
   "button__interactive--randomize"
+)[0];
+
+const eraseButtonEl = document.getElementsByClassName(
+  "button__interactive--erase"
 )[0];
 
 const startApp = () => {
@@ -47,6 +53,25 @@ randomButtonEl.addEventListener("click", () => {
   clearInterval(updateBoard);
   board.randomizeBoard();
   board.transformBoard();
+  board.updateBoard(boardElement);
+  gaming = false;
+});
+
+eraseButtonEl.addEventListener("click", () => {
+  clearInterval(updateBoard);
+
+  board.board = new Array(board.rows).fill(null);
+
+  board.board.forEach((row, position) => {
+    board.board[position] = new Array(board.columns).fill(null);
+
+    board.board[position].forEach((column, columnIndex) => {
+      board.board[position][columnIndex] = new Cell(false);
+    });
+  });
+
+  board.transformBoard();
+
   board.updateBoard(boardElement);
   gaming = false;
 });

@@ -117,6 +117,7 @@ class Board {
             this.board[rowIndex][cellIndex] = 1;
           }
         });
+
         if (cell) {
           cellElement.classList.add("alive");
         } else {
