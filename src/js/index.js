@@ -1,53 +1,31 @@
 import Board from "./classes/Board/Board";
-import boardElement from "./global-variables/global-variables";
 import Cell from "./classes/Cell/Cell";
 import calidscopePattern from "./patterns/calidoscope-pattern";
 import spacecraftPattern from "./patterns/spacecraft-pattern";
+import {
+  boardElement,
+  playButtonEl,
+  stopButtonEl,
+  randomButtonEl,
+  eraseButtonEl,
+  calidoscopePatternButtonEl,
+  spacecraftPatternButtonEl,
+} from "./global-variables/global-variables";
 
-const playButtonEl = document.getElementsByClassName(
-  "button__interactive--play"
-)[0];
-const stopButtonEl = document.getElementsByClassName(
-  "button__interactive--stop"
-)[0];
-const randomButtonEl = document.getElementsByClassName(
-  "button__interactive--randomize"
-)[0];
-
-const eraseButtonEl = document.getElementsByClassName(
-  "button__interactive--erase"
-)[0];
-
-const calidoscopePatternButtonEl = document.getElementsByClassName(
-  "button-pattern__calidoscope"
-)[0];
-
-const spacecraftPatternButtonEl = document.getElementsByClassName(
-  "button-pattern__spacecraft"
-)[0];
-
-const startApp = () => {
-  board.randomizeBoard();
-
-  board.transformBoard();
-
-  board.updateBoard(boardElement);
-};
+import startApp from "./functions/startApp/startApp";
 
 let gaming = false;
 let updateBoard;
 const board = new Board();
 
-const update = () => {
-  board.buildNextGenerationBoard();
-  board.updateBoard(boardElement);
-};
-
-startApp();
+startApp(board, boardElement);
 
 playButtonEl.addEventListener("click", () => {
   if (!gaming) {
-    updateBoard = setInterval(update, 300);
+    updateBoard = setInterval(() => {
+      board.buildNextGenerationBoard();
+      board.updateBoard(boardElement);
+    }, 300);
   }
 
   gaming = true;
