@@ -107,10 +107,13 @@ class Board {
         cellElement.classList.add("button--board");
         cellElement.addEventListener("click", () => {
           if (cell) {
-            cellElement.classList.add("dead");
+            cellElement.classList.toggle("dead");
+
             this.board[rowIndex][cellIndex] = 0;
-          } else {
-            cellElement.classList.add("alive");
+          }
+
+          if (!cell) {
+            cellElement.classList.toggle("alive");
             this.board[rowIndex][cellIndex] = 1;
           }
         });
