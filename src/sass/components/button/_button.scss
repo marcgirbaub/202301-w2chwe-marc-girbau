@@ -23,3 +23,27 @@
     font-size: 2rem;
   }
 }
+
+.buttons-patterns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0 6px;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+}

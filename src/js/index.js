@@ -1,7 +1,7 @@
 import Board from "./classes/Board/Board";
 import boardElement from "./global-variables/global-variables";
-import emptyBoard from "./patterns/patterns";
 import Cell from "./classes/Cell/Cell";
+import calidscopePattern from "./patterns/calidoscope-pattern";
 
 const playButtonEl = document.getElementsByClassName(
   "button__interactive--play"
@@ -15,6 +15,10 @@ const randomButtonEl = document.getElementsByClassName(
 
 const eraseButtonEl = document.getElementsByClassName(
   "button__interactive--erase"
+)[0];
+
+const calidoscopePatternButtonEl = document.getElementsByClassName(
+  "button-pattern__calidoscope"
 )[0];
 
 const startApp = () => {
@@ -72,6 +76,13 @@ eraseButtonEl.addEventListener("click", () => {
 
   board.transformBoard();
 
+  board.updateBoard(boardElement);
+  gaming = false;
+});
+
+calidoscopePatternButtonEl.addEventListener("click", () => {
+  clearInterval(updateBoard);
+  board.board = calidscopePattern;
   board.updateBoard(boardElement);
   gaming = false;
 });
