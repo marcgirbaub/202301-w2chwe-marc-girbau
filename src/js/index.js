@@ -1,8 +1,6 @@
 import Board from "./classes/Board/Board";
 import boardElement from "./global-variables/global-variables";
 
-const mainContainer = document.getElementsByClassName("main-container")[0];
-
 const startApp = () => {
   const board = new Board();
 

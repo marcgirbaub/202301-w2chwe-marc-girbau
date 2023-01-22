@@ -1,0 +1,6 @@
+@use "../../variables/variables";
+
+h1 {
+  font-weight: variables.$title-font-weight;
+  font-size: 5rem;
+}

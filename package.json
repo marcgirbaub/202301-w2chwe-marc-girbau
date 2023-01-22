@@ -35,5 +35,8 @@
         ]
       }
     }
+  },
+  "dependencies": {
+    "@fontsource/rajdhani": "^4.5.10"
   }
 }
