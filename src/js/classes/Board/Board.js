@@ -6,7 +6,7 @@ class Board {
   board;
   nextGenerationBoard;
 
-  constructor(columns = 20, rows = 20) {
+  constructor(columns = 60, rows = 40) {
     this.columns = columns;
     this.rows = rows;
   }
@@ -117,6 +117,7 @@ class Board {
             this.board[rowIndex][cellIndex] = 1;
           }
         });
+
         if (cell) {
           cellElement.classList.add("alive");
         } else {

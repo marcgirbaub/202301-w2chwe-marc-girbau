@@ -1,5 +1,8 @@
 import Board from "./classes/Board/Board";
 import boardElement from "./global-variables/global-variables";
+import Cell from "./classes/Cell/Cell";
+import calidscopePattern from "./patterns/calidoscope-pattern";
+import spacecraftPattern from "./patterns/spacecraft-pattern";
 
 const playButtonEl = document.getElementsByClassName(
   "button__interactive--play"
@@ -9,6 +12,18 @@ const stopButtonEl = document.getElementsByClassName(
 )[0];
 const randomButtonEl = document.getElementsByClassName(
   "button__interactive--randomize"
+)[0];
+
+const eraseButtonEl = document.getElementsByClassName(
+  "button__interactive--erase"
+)[0];
+
+const calidoscopePatternButtonEl = document.getElementsByClassName(
+  "button-pattern__calidoscope"
+)[0];
+
+const spacecraftPatternButtonEl = document.getElementsByClassName(
+  "button-pattern__spacecraft"
 )[0];
 
 const startApp = () => {
@@ -47,6 +62,39 @@ randomButtonEl.addEventListener("click", () => {
   clearInterval(updateBoard);
   board.randomizeBoard();
   board.transformBoard();
+  board.updateBoard(boardElement);
+  gaming = false;
+});
+
+eraseButtonEl.addEventListener("click", () => {
+  clearInterval(updateBoard);
+
+  board.board = new Array(board.rows).fill(null);
+
+  board.board.forEach((row, position) => {
+    board.board[position] = new Array(board.columns).fill(null);
+
+    board.board[position].forEach((column, columnIndex) => {
+      board.board[position][columnIndex] = new Cell(false);
+    });
+  });
+
+  board.transformBoard();
+
+  board.updateBoard(boardElement);
+  gaming = false;
+});
+
+calidoscopePatternButtonEl.addEventListener("click", () => {
+  clearInterval(updateBoard);
+  board.board = calidscopePattern;
+  board.updateBoard(boardElement);
+  gaming = false;
+});
+
+spacecraftPatternButtonEl.addEventListener("click", () => {
+  clearInterval(updateBoard);
+  board.board = spacecraftPattern;
   board.updateBoard(boardElement);
   gaming = false;
 });
