@@ -9,3 +9,17 @@
 .alive {
   background-color: variables.$cell-dark-color;
 }
+
+.button--interactive {
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  i {
+    font-size: 3rem;
+  }
+}
