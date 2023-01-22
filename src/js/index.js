@@ -15,8 +15,7 @@ const startApp = () => {
     board.updateBoard(boardElement);
   };
 
-  let updateBoard;
-  updateBoard = setInterval(update, 300);
+  setInterval(update, 300);
 };
 
 startApp();
