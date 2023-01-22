@@ -1,0 +1,17 @@
+@use "../variables/variables";
+
+body {
+  font-family: variables.$main-font-family;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 50px;
+}

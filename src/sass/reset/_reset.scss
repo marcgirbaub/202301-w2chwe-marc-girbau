@@ -1,0 +1,21 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}

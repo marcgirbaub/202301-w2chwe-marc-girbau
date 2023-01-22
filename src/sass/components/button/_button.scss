@@ -1,0 +1,25 @@
+@use "../../variables/variables";
+
+.button--board {
+  height: 20px;
+  width: 20px;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.alive {
+  background-color: variables.$cell-dark-color;
+}
+
+.button--interactive {
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  i {
+    font-size: 3rem;
+  }
+}

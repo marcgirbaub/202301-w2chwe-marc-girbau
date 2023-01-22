@@ -12,11 +12,17 @@ class Board {
   }
 
   randomizeBoard() {
-    this.board = new Array(this.columns).fill(
-      new Array(this.rows)
-        .fill(null)
-        .map(() => new Cell(Math.floor(Math.random() * 2) === 1))
-    );
+    this.board = new Array(this.rows).fill(null);
+
+    this.board.forEach((row, position) => {
+      this.board[position] = new Array(this.columns).fill(null);
+
+      this.board[position].forEach((column, columnIndex) => {
+        this.board[position][columnIndex] = new Cell(
+          Math.floor(Math.random() * 2) === 1
+        );
+      });
+    });
   }
 
   getSubArray(board, row, column) {
@@ -91,8 +97,10 @@ class Board {
   }
 
   updateBoard(board) {
+    board.innerHTML = "";
     this.board.forEach((row) => {
       const rowElement = document.createElement("div");
+      rowElement.classList.add("row");
 
       row.forEach((cell) => {
         const cellElement = document.createElement("button");
