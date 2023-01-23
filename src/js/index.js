@@ -1,7 +1,7 @@
 import Board from "./classes/Board/Board";
 import Cell from "./classes/Cell/Cell";
 import calidscopePattern from "./patterns/calidoscope-pattern";
-import spacecraftPattern from "./patterns/spacecraft-pattern";
+
 import {
   boardElement,
   playButtonEl,
@@ -9,7 +9,6 @@ import {
   randomButtonEl,
   eraseButtonEl,
   calidoscopePatternButtonEl,
-  spacecraftPatternButtonEl,
 } from "./global-variables/global-variables";
 
 import startApp from "./functions/startApp/startApp";
@@ -66,13 +65,6 @@ eraseButtonEl.addEventListener("click", () => {
 calidoscopePatternButtonEl.addEventListener("click", () => {
   clearInterval(updateBoard);
   board.board = calidscopePattern;
-  board.updateBoard(boardElement);
-  gaming = false;
-});
-
-spacecraftPatternButtonEl.addEventListener("click", () => {
-  clearInterval(updateBoard);
-  board.board = spacecraftPattern;
   board.updateBoard(boardElement);
   gaming = false;
 });
